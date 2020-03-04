@@ -672,6 +672,16 @@
               xml += '<pt><x>' + (bbox.x + bbox.width) + '</x><y>' + (bbox.y + bbox.height) + '</y><l>' + isGroundThrugh + '</l></pt>';
               xml += '<pt><x>' + (bbox.x + bbox.width) + '</x><y>' + bbox.y + '</y><l>' + isGroundThrugh + '</l></pt>';
               xml += '</polygon>\n';
+            } else {
+              xml += '    ';
+              xml += '<polygon>';
+              xml += '<t>' + frameNumber + '</t>';
+              xml += '<s>' + annotatedFrame.stationaryCount + '</s>';
+              xml += '<pt><x>' + -1 + '</x><y>' + -1 + '</y><l>' + -1 + '</l></pt>';
+              xml += '<pt><x>' + -1 + '</x><y>' + -1 + '</y><l>' + -1 + '</l></pt>';
+              xml += '<pt><x>' + -1 + '</x><y>' + -1 + '</y><l>' + -1 + '</l></pt>';
+              xml += '<pt><x>' + -1 + '</x><y>' + -1 + '</y><l>' + -1 + '</l></pt>';
+              xml += '</polygon>\n';
             }
           }
 
@@ -744,7 +754,7 @@
                 annotatedObject.add(annotatedFrame);
               }
 
-              let bbox = new BoundingBox(x, y, w, h);
+              let bbox = (x == -1 ? null : new BoundingBox(x, y, w, h));
               let annotatedFrame = new AnnotatedFrame(frameNumber, bbox, isGroundThrough, stationaryCount);
               annotatedObject.add(annotatedFrame);
 
