@@ -762,11 +762,11 @@
             }
 
             if (lastFrame + 1 < framesManager.frames.totalFrames()) {
-              let annotatedFrame = new AnnotatedFrame(lastFrame + 1, null, true, stationaryCount);
+              let annotatedFrame = new AnnotatedFrame(lastFrame + 1, null, true, 0);
               annotatedObject.add(annotatedFrame);
             }
           }
-
+          
           player.drawFrame(player.currentFrame);
         };
         reader.readAsText(this.files[0]);
